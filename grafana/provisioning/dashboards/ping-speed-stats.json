@@ -99,24 +99,15 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "code",
-          "expr": "speedtest_download_bits_per_second",
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "speedtest_download_bits_per_second / 1000000",
           "format": "time_series",
-          "hide": true,
+          "hide": false,
+          "instant": false,
           "intervalFactor": 1,
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A/1000000",
-          "hide": false,
-          "refId": "B",
-          "type": "math"
         }
       ],
       "title": "Download",
@@ -194,24 +185,13 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "speedtest_upload_bits_per_second",
+          "expr": "speedtest_upload_bits_per_second / 1000000",
           "format": "time_series",
-          "hide": true,
+          "hide": false,
           "intervalFactor": 1,
           "legendFormat": "",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A/1000000",
-          "hide": false,
-          "refId": "B",
-          "type": "math"
         }
       ],
       "title": "Upload",
@@ -319,14 +299,14 @@
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "lineInterpolation": "stepAfter",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": 3600000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -342,14 +322,10 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
-          "unit": "short"
+          "unit": "Mbits"
         },
         "overrides": []
       },
@@ -381,10 +357,10 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "speedtest_download_bits_per_second",
+          "expr": "speedtest_download_bits_per_second / 1000000",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "{{direction}}",
+          "legendFormat": "Download",
           "range": true,
           "refId": "A"
         },
@@ -393,10 +369,10 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "code",
-          "expr": "speedtest_upload_bits_per_second",
+          "editorMode": "builder",
+          "expr": "speedtest_upload_bits_per_second / 1000000",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "Upload",
           "range": true,
           "refId": "B"
         }
@@ -583,7 +559,7 @@
     "list": []
   },
   "time": {
-    "from": "now-2m",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -604,6 +580,6 @@
   "timezone": "browser",
   "title": "internet connection",
   "uid": "o9mIe_Aik",
-  "version": 1,
+  "version": 3,
   "weekStart": ""
 }
