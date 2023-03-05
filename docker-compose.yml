@@ -11,6 +11,7 @@ networks:
 services:
   prometheus:
     image: prom/prometheus
+    restart: unless-stopped
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -29,6 +30,7 @@ services:
 
   grafana:
     image: grafana/grafana
+    restart: unless-stopped
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
@@ -50,6 +52,7 @@ services:
     ports:
       - 9115:9115
     image: prom/blackbox-exporter
+    restart: unless-stopped
     volumes:
       - type: bind
         source: ./blackbox/config/blackbox.yml
@@ -68,6 +71,6 @@ services:
     ports:
       - 9798:9798
     image: miguelndecarvalho/speedtest-exporter
-    restart: always
+    restart: unless-stopped
     networks:
       - back-tier
