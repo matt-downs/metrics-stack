@@ -51,7 +51,10 @@ services:
       - 9115:9115
     image: prom/blackbox-exporter
     volumes:
-      - ./blackbox/config:/config
+      - type: bind
+        source: ./blackbox/config/blackbox.yml
+        target: /config/blackbox.yml
+        read_only: true
     command:
       - "--config.file=/config/blackbox.yml"
     networks:
