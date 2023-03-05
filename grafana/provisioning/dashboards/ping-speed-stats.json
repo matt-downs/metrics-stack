@@ -110,7 +110,7 @@
           "refId": "A"
         }
       ],
-      "title": "Download",
+      "title": "Avg download",
       "transformations": [],
       "type": "gauge"
     },
@@ -194,7 +194,7 @@
           "refId": "A"
         }
       ],
-      "title": "Upload",
+      "title": "Avg Upload",
       "type": "gauge"
     },
     {
@@ -272,7 +272,7 @@
           "refId": "A"
         }
       ],
-      "title": "speedtest ping",
+      "title": "Avg Ping",
       "type": "gauge"
     },
     {
@@ -377,7 +377,7 @@
           "refId": "B"
         }
       ],
-      "title": "speedtest",
+      "title": "Speedtest Results",
       "type": "timeseries"
     },
     {
@@ -580,6 +580,6 @@
   "timezone": "browser",
   "title": "internet connection",
   "uid": "o9mIe_Aik",
-  "version": 3,
+  "version": 5,
   "weekStart": ""
 }
